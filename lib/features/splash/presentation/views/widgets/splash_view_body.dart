@@ -13,14 +13,13 @@ class SplashViewBody extends StatelessWidget {
         Image.asset(
           AssetsData.logo,
         ),
-        Center(
-          child: Text(
-            "the movie app U want!",
-            style: TextStyle(
-              fontSize: 20,
-              color: const Color.fromARGB(255, 230, 222, 222),
-            ),
+        
+        Text(
+          "Read free books",
+          style: TextStyle(
+            fontSize: 20,
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );
