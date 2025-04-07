@@ -21,10 +21,10 @@ class HomeViewBody extends StatelessWidget {
                 child: FeaturedBooksListView(),
               ),
               SizedBox(
-                height: 60,
+                height: 50,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   "Best Seller",
                   style: Styles.textStyle18,
@@ -38,7 +38,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         const SliverFillRemaining(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: BestSellerListView(),
           ),
         ),
