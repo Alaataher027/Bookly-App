@@ -19,6 +19,7 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
         emit(NewestBooksFailure(errMessage: failure.errMessage));
       },
       (books) {
+        print("Success with ${books.length} books");
         emit(NewestBooksSuccess(newestBooksList: books));
       },
     );
