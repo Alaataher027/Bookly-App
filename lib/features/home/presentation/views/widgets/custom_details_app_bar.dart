@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomDetailsAppBar extends StatelessWidget {
   const CustomDetailsAppBar({super.key});
@@ -12,7 +13,9 @@ class CustomDetailsAppBar extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
             icon: Icon(
               FontAwesomeIcons.x,
               size: 20,

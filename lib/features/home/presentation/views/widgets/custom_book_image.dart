@@ -1,7 +1,5 @@
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indecator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
