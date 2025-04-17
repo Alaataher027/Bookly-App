@@ -1,7 +1,9 @@
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_app/features/search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:bookly_app/features/search/presentation/views/widgets/custom_search_text_field.dart';
+import 'package:bookly_app/features/search/presentation/views/widgets/search_result_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
@@ -13,7 +15,30 @@ class SearchViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomSearchTextField(),
+          CustomSearchTextField(
+            onChanged: (searchWord) {
+              final word = searchWord?.trim() ?? "";
+              if (word.isEmpty) {
+                Text("Enter Worrd to search");
+              } else {
+                BlocProvider.of<SearchCubit>(context)
+                    .getSearchResult(searchWord: word);
+              }
+            },
+            onSubmitted: (searchWord) {
+              final word = searchWord?.trim() ?? "";
+              if (word.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Please enter a search keyword."),
+                  ),
+                );
+              } else {
+                BlocProvider.of<SearchCubit>(context)
+                    .getSearchResult(searchWord: word);
+              }
+            },
+          ),
           SizedBox(
             height: 20,
           ),
@@ -24,30 +49,9 @@ class SearchViewBody extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          // Expanded(child: SearchResultListView()),
+          Expanded(child: SearchResultListView()),
         ],
       ),
     );
   }
 }
-
-// class SearchResultListView extends StatelessWidget {
-//   const SearchResultListView({super.key});
-  
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       // shrinkWrap: true, // takes the height of the list view children
-//       // physics: const NeverScrollableScrollPhysics(),
-//       padding: EdgeInsets.zero,
-//       itemCount: 10,
-//       itemBuilder: (context, index) {
-//         return Padding(
-//           padding: const EdgeInsets.symmetric(vertical: 10),
-//           child: BestSellerListViewItem(),
-//         );
-//       },
-//     );
-//   }
-// }
