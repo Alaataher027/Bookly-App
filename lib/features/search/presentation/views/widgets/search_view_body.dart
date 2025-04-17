@@ -16,15 +16,6 @@ class SearchViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomSearchTextField(
-            onChanged: (searchWord) {
-              final word = searchWord?.trim() ?? "";
-              if (word.isEmpty) {
-                Text("Enter Worrd to search");
-              } else {
-                BlocProvider.of<SearchCubit>(context)
-                    .getSearchResult(searchWord: word);
-              }
-            },
             onSubmitted: (searchWord) {
               final word = searchWord?.trim() ?? "";
               if (word.isEmpty) {

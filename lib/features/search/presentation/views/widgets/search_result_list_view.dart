@@ -1,14 +1,14 @@
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indecator.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_item.dart';
 import 'package:bookly_app/features/search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key,});
-
+  const SearchResultListView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,19 @@ class SearchResultListView extends StatelessWidget {
         } else if (state is SearchLoading) {
           return CustomLoadingIndecator();
         } else {
-          return Center(child: Text("result will shown here!"));
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.search_rounded,
+                  size: 100,
+                  color: const Color.fromARGB(125, 255, 255, 255),
+                ),
+                Text("Start Searching!")
+              ],
+            ),
+          );
         }
       },
     );
